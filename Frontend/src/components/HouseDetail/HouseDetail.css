@@ -1,0 +1,748 @@
+/* House Detail CSS Stylesheet */
+
+/* Layout Shell adjustments */
+.h-screen {
+  height: 100vh;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/* Farm Grid Background */
+.farm-grid {
+  background-image: radial-gradient(#e2e8f0 2px, transparent 2px);
+  background-size: 24px 24px;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+/* Isometric 3D Styles */
+.isometric-scene {
+  flex: 1;
+  perspective: 1500px;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: var(--db-surface-container-low);
+  padding: 48px;
+}
+
+.isometric-base {
+  width: 800px;
+  height: 600px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px dashed rgba(108, 122, 113, 0.3);
+}
+
+.isometric-card {
+  transform: translateZ(20px) rotateZ(45deg) rotateX(-60deg);
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.farm-zone {
+  background-color: #e5d5c0; /* Sand/Beige */
+  border: 4px solid #10b981; /* Primary Green */
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.farm-zone:hover {
+  filter: brightness(0.95);
+}
+
+.path-road {
+  background-color: #374151; /* Dark grey */
+  grid-column: span 2;
+  height: 48px;
+  align-self: center;
+}
+
+.status-dot {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.status-dot.active {
+  background-color: #10b981;
+}
+
+.status-dot.error {
+  background-color: #ef4444;
+}
+
+/* Floating 3D Cards */
+.floating-3d-card {
+  width: 56px;
+  height: 76px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border: 2px solid var(--db-outline-variant);
+  padding: 10px 4px 6px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+}
+
+.floating-3d-card.alert-border {
+  border-color: #ef4444 !important;
+}
+
+.floating-3d-card span.material-symbols-outlined {
+  font-size: 26px;
+  line-height: 1;
+}
+
+.floating-3d-card .card-lbl {
+  font-size: 8px;
+  font-weight: 700;
+  margin-top: 2px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Color themes for different sensors (matching image reference) */
+.floating-3d-card.theme-temperature {
+  background-color: #fee2e2; /* Red-100 */
+  border-color: #f87171;     /* Red-400 */
+}
+.floating-3d-card.theme-temperature span.material-symbols-outlined {
+  color: #ef4444;            /* Red-500 */
+}
+
+.floating-3d-card.theme-humidity {
+  background-color: #eff6ff;    /* Blue-50 */
+  border-color: #60a5fa;        /* Blue-400 */
+}
+.floating-3d-card.theme-humidity span.material-symbols-outlined {
+  color: #3b82f6;               /* Blue-500 */
+}
+
+.floating-3d-card.theme-soilMoisture {
+  background-color: #e0e7ff; /* Indigo-50 */
+  border-color: #818cf8;     /* Indigo-400 */
+}
+.floating-3d-card.theme-soilMoisture span.material-symbols-outlined {
+  color: #4f46e5;            /* Indigo-600 */
+}
+
+.floating-3d-card.theme-lightIntensity {
+  background-color: #fffbeb; /* Amber-50 */
+  border-color: #fbbf24;     /* Amber-400 */
+}
+.floating-3d-card.theme-lightIntensity span.material-symbols-outlined {
+  color: #d97706;            /* Amber-600 */
+}
+
+.floating-3d-card.theme-waterLevel {
+  background-color: #f3e8ff; /* Purple-50 */
+  border-color: #c084fc;     /* Purple-400 */
+}
+.floating-3d-card.theme-waterLevel span.material-symbols-outlined {
+  color: #9333ea;            /* Purple-600 */
+}
+
+/* Central Control Post */
+.central-control-post {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+}
+
+.control-pillar {
+  width: 40px;
+  height: 56px;
+  background-color: #1e293b;
+  border-radius: 6px;
+  border: 2px solid var(--db-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-pillar span {
+  color: #ffffff;
+  font-size: 20px;
+}
+
+/* Zoom & Control HUD */
+.hud-controls-wrapper {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 30;
+}
+
+.hud-button-group {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--db-outline-variant);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hud-btn {
+  background: none;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--db-on-surface-variant);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.hud-btn:hover {
+  background-color: var(--db-surface-container-high);
+}
+
+.hud-btn.active {
+  color: var(--db-primary);
+  background-color: rgba(0, 108, 73, 0.05);
+}
+
+/* Map Legend */
+.map-legend {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--db-outline-variant);
+  padding: 16px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.legend-dot.active {
+  background-color: var(--db-primary);
+}
+
+.legend-dot.alert {
+  background-color: var(--db-error);
+}
+
+.legend-text {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--db-on-surface-variant);
+}
+
+.legend-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.legend-checkbox {
+  border-radius: 4px;
+  border-color: var(--db-outline-variant);
+  color: var(--db-primary);
+}
+
+.legend-checkbox:focus {
+  ring-color: var(--db-primary);
+}
+
+/* Axis Labels */
+.axis-label-x {
+  position: absolute;
+  left: 50%;
+  bottom: -32px;
+  transform: translateX(-50%);
+  color: var(--db-on-surface-variant);
+  font-size: 12px;
+}
+
+.axis-label-y {
+  position: absolute;
+  right: -32px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--db-on-surface-variant);
+  font-size: 12px;
+}
+
+/* Right Side Status Panel */
+.status-panel {
+  position: relative;
+  width: 384px;
+  background-color: #ffffff;
+  border-left: 1px solid var(--db-outline-variant);
+  display: flex;
+  flex-direction: column;
+  z-index: 40;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-left 0.3s ease;
+}
+
+.status-panel.collapsed {
+  width: 0;
+  border-left: none;
+}
+
+.status-panel-toggle-btn {
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 48px;
+  background-color: #ffffff;
+  border: 1px solid var(--db-outline-variant);
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 50;
+  color: var(--db-on-surface-variant);
+  box-shadow: -2px 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.status-panel-toggle-btn:hover {
+  color: var(--db-primary);
+  background-color: var(--db-surface-container-low);
+}
+
+.status-panel.collapsed > *:not(.status-panel-toggle-btn) {
+  display: none !important;
+}
+
+.status-panel-section {
+  padding: 24px;
+  border-bottom: 1px solid var(--db-outline-variant);
+}
+
+.status-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.status-panel-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.status-badge {
+  padding: 4px 8px;
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--db-on-primary-container);
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.panel-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.panel-metric-card {
+  padding: 16px;
+  background-color: var(--db-surface-container-low);
+  border: 1px solid var(--db-outline-variant);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-metric-lbl {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--db-on-surface-variant);
+  margin-bottom: 4px;
+}
+
+.panel-metric-val-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.panel-metric-num {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.panel-metric-num.primary-color {
+  color: var(--db-primary);
+}
+
+.panel-metric-unit {
+  font-size: 14px;
+}
+
+.panel-progress-bg {
+  height: 4px;
+  width: 100%;
+  background-color: var(--db-outline-variant);
+  border-radius: 9999px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.panel-progress-fill {
+  height: 100%;
+  background-color: var(--db-primary);
+}
+
+.panel-progress-fill.secondary-color {
+  background-color: var(--db-secondary);
+}
+
+/* Device Registry List */
+.registry-list-section {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.registry-section-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--db-on-surface-variant);
+  margin: 0 0 16px 0;
+}
+
+.device-rows-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.device-row {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.device-row:hover {
+  background-color: var(--db-surface-container-low);
+  border-color: var(--db-outline-variant);
+}
+
+.device-row.error-theme {
+  background-color: rgba(186, 26, 26, 0.03);
+  border-color: rgba(186, 26, 26, 0.1);
+}
+
+.device-row-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.device-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: rgba(0, 108, 73, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--db-primary);
+}
+
+.device-icon-wrapper.secondary-theme {
+  background-color: rgba(0, 101, 145, 0.1);
+  color: var(--db-secondary);
+}
+
+.device-icon-wrapper.error-theme {
+  background-color: rgba(186, 26, 26, 0.1);
+  color: var(--db-error);
+}
+
+.device-info {
+  flex: 1;
+}
+
+.device-name-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.device-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.device-status {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.device-status.online {
+  color: var(--db-primary);
+}
+
+.device-status.running {
+  color: var(--db-secondary);
+}
+
+.device-status.error {
+  color: var(--db-error);
+}
+
+.device-details {
+  font-size: 12px;
+  color: var(--db-on-surface-variant);
+  margin-top: 2px;
+}
+
+.device-arrow {
+  color: var(--db-outline-variant);
+}
+
+/* Production Trend Section */
+.production-trend-wrapper {
+  margin-top: 32px;
+}
+
+.trend-card {
+  height: 128px;
+  background-color: var(--db-surface-container-lowest);
+  border: 1px solid var(--db-outline-variant);
+  border-radius: 12px;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.trend-bars-wrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 8px;
+  gap: 4px;
+}
+
+.trend-bar-fill {
+  background-color: rgba(0, 108, 73, 0.2);
+  width: 100%;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.trend-bar-fill.highlight {
+  background-color: var(--db-primary);
+}
+
+.trend-info-row {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--db-on-surface-variant);
+}
+
+.trend-label {
+  font-weight: 500;
+}
+
+.trend-value {
+  color: var(--db-primary);
+  font-weight: 700;
+}
+
+/* Panel Footer Controls */
+.panel-footer-controls {
+  padding: 24px;
+  background-color: var(--db-surface-container-low);
+  border-t: 1px solid var(--db-outline-variant);
+}
+
+.system-control-btn {
+  width: 100%;
+  background-color: var(--db-primary);
+  color: #ffffff;
+  border: none;
+  padding: 12px 0;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.system-control-btn:hover {
+  opacity: 0.9;
+}
+
+.system-control-btn:active {
+  transform: scale(0.98);
+}
+
+/* Custom SweetAlert2 styling */
+.custom-swal-popup {
+  border-radius: 16px !important;
+  background-color: var(--db-surface-container-lowest) !important;
+  border: 1px solid var(--db-outline-variant) !important;
+  padding: 24px !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.custom-swal-confirm-btn {
+  background-color: var(--db-primary) !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 10px 24px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  margin-left: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.custom-swal-confirm-btn:hover {
+  opacity: 0.9 !important;
+}
+
+.custom-swal-delete-btn {
+  background-color: var(--db-error, #ba1a1a) !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 10px 24px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  margin-left: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.custom-swal-delete-btn:hover {
+  opacity: 0.9 !important;
+}
+
+.custom-swal-cancel-btn {
+  background-color: transparent !important;
+  color: var(--db-on-surface-variant) !important;
+  border: 1px solid var(--db-outline-variant) !important;
+  padding: 10px 24px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+.custom-swal-cancel-btn:hover {
+  background-color: var(--db-surface-container-low) !important;
+}
+
+/* Device Actions style adjustments */
+.device-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.device-delete-btn {
+  background: none;
+  border: none;
+  color: var(--db-on-surface-variant);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 50%;
+  opacity: 0; /* Hide by default, show on hover */
+  transition: all 0.2s ease;
+}
+
+.device-row:hover .device-delete-btn {
+  opacity: 1;
+  color: var(--db-error, #ba1a1a);
+}
+
+.device-delete-btn:hover {
+  background-color: rgba(186, 26, 26, 0.08) !important;
+  color: var(--db-error, #ba1a1a) !important;
+}
+

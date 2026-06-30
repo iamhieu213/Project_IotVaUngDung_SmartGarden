@@ -1,0 +1,387 @@
+/* Analytics CSS Stylesheet */
+
+.analytics-header-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 768px) {
+  .analytics-header-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.analytics-title-group .page-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--db-on-surface, #1e293b);
+}
+
+.analytics-title-group .page-subtitle {
+  margin: 4px 0 0 0;
+  font-size: 14px;
+  color: var(--db-on-surface-variant, #64748b);
+}
+
+/* Time Range Filter Buttons */
+.range-selector-buttons {
+  display: flex;
+  align-items: center;
+  background-color: var(--db-surface-container-high, #e2e8f0);
+  padding: 4px;
+  border-radius: 8px;
+  gap: 2px;
+  align-self: flex-start;
+}
+
+.range-btn {
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--db-on-surface-variant, #64748b);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.range-btn:hover {
+  color: var(--db-on-surface, #1e293b);
+}
+
+.range-btn.active {
+  background-color: #ffffff;
+  color: var(--db-primary, #006c49);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Empty State Styling */
+.analytics-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 60px 24px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--db-outline-variant, #e2e8f0);
+  margin-top: 20px;
+}
+
+.analytics-empty-state .empty-icon {
+  font-size: 64px;
+  color: #cbd5e1;
+  margin-bottom: 16px;
+}
+
+.analytics-empty-state h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.analytics-empty-state p {
+  margin: 0 0 20px 0;
+  font-size: 14px;
+  color: #64748b;
+  max-width: 400px;
+}
+
+.go-to-houses-btn {
+  background-color: var(--db-primary, #006c49);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.go-to-houses-btn:hover {
+  opacity: 0.9;
+}
+
+/* Bento Grid Configuration */
+.analytics-bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 1200px) {
+  .analytics-bento-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Solid Cards */
+.solid-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--db-outline-variant, #e2e8f0);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.25s ease;
+}
+
+.solid-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.card-header-with-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 992px) {
+  .card-header-with-actions {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+.card-header-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.card-header-info .header-icon {
+  font-size: 24px;
+  color: var(--db-primary, #006c49);
+  padding: 8px;
+  background-color: rgba(0, 108, 73, 0.08);
+  border-radius: 8px;
+  margin-top: 2px;
+}
+
+.card-section-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.card-section-subtitle {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* Chart Legend Selectors */
+.chart-legend-selectors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.legend-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.legend-tag .legend-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* Colors for specific legends */
+.legend-tag.temp .legend-bullet { background-color: #ff5722; }
+.legend-tag.hum .legend-bullet { background-color: #2196f3; }
+.legend-tag.soil .legend-bullet { background-color: #4caf50; }
+.legend-tag.light .legend-bullet { background-color: #ffc107; }
+
+.legend-tag:hover {
+  background-color: #f1f5f9;
+}
+
+.legend-tag.disabled {
+  opacity: 0.4;
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
+  color: #94a3b8;
+}
+
+.legend-tag.disabled .legend-bullet {
+  background-color: #94a3b8 !important;
+}
+
+/* Chart Container & Wrapper */
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+  background-color: #fcfdfe;
+  border-radius: 8px;
+  border: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.interactive-svg-chart {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  display: block;
+}
+
+/* Loading & Empty Chart Overlay */
+.chart-loading-overlay, .chart-empty-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+  color: #64748b;
+  width: 100%;
+}
+
+.chart-loading-overlay .animate-spin {
+  font-size: 32px;
+  color: var(--db-primary, #006c49);
+  animation: spin 1.2s linear infinite;
+  margin-bottom: 12px;
+}
+
+.chart-empty-overlay span {
+  font-size: 36px;
+  color: #cbd5e1;
+  margin-bottom: 12px;
+}
+
+.chart-loading-overlay p, .chart-empty-overlay p {
+  margin: 0;
+  font-size: 13px;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Interactive Line Hovering & Tooltip */
+.chart-tooltip {
+  position: absolute;
+  background-color: #1e293b;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-size: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+  z-index: 100;
+  width: 160px;
+  transition: left 0.1s ease, top 0.1s ease;
+}
+
+.tooltip-header {
+  font-weight: 600;
+  color: #f1f5f9;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+}
+
+.tooltip-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.indicator-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.indicator-dot.temp { background-color: #ff5722; }
+.indicator-dot.hum { background-color: #2196f3; }
+.indicator-dot.soil { background-color: #4caf50; }
+.indicator-dot.light { background-color: #ffc107; }
+
+.tooltip-label {
+  color: #94a3b8;
+  flex: 1;
+}
+
+.tooltip-val {
+  font-weight: 500;
+  font-family: monospace;
+}
+
+/* SVGBars hover */
+.svg-bar {
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.svg-bar:hover {
+  opacity: 0.85;
+}
+
+/* Bar Chart Legend */
+.bar-legend-container {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 16px;
+  padding-bottom: 8px;
+}
+
+.bar-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.legend-box {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.legend-box.temp { background-color: #ff5722; }
+.legend-box.hum { background-color: #2196f3; }

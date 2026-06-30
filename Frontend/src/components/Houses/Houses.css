@@ -1,0 +1,491 @@
+/* Mushroom Houses Page CSS */
+
+.houses-header-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 768px) {
+  .houses-header-actions {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.houses-title-wrapper h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--db-on-surface);
+}
+
+.houses-title-wrapper p {
+  margin: 4px 0 0 0;
+  font-size: 14px;
+  color: var(--db-on-surface-variant);
+}
+
+.search-add-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-box-wrapper {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--db-on-surface-variant);
+  font-size: 20px;
+}
+
+.search-input {
+  padding-left: 40px;
+  padding-right: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: var(--db-surface-container-lowest);
+  border: 1px solid var(--db-outline-variant);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--db-on-surface);
+  width: 256px;
+  outline: none;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: var(--db-primary);
+  box-shadow: 0 0 0 2px rgba(0, 108, 73, 0.15);
+}
+
+.add-house-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--db-primary);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.add-house-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.add-house-btn:active {
+  transform: scale(0.95);
+}
+
+/* Filter Controls */
+.filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.filter-controls::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.filter-controls {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.filter-btn {
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.filter-btn.active {
+  background-color: var(--db-primary-container);
+  color: var(--db-on-primary-container);
+  border: 1px solid transparent;
+}
+
+.filter-btn.inactive {
+  background-color: var(--db-surface-container-lowest);
+  color: var(--db-on-surface-variant);
+  border: 1px solid var(--db-outline-variant);
+}
+
+.filter-btn.inactive:hover {
+  background-color: var(--db-surface-container-high);
+}
+
+.filter-more-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--db-on-surface-variant);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.filter-more-btn:hover {
+  color: var(--db-primary);
+}
+
+/* Bento Grid */
+.houses-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .houses-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .houses-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.house-card {
+  background-color: var(--db-surface-container-lowest);
+  border: 1px solid var(--db-outline-variant);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.1s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+  perspective: 1000px;
+}
+
+.house-card.border-dashed {
+  border-style: dashed;
+}
+
+.card-image-wrapper {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+}
+
+.house-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.house-card:hover .house-image {
+  transform: scale(1.05);
+}
+
+.house-card-placeholder {
+  height: 160px;
+  background-color: var(--db-surface-container);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.house-placeholder-icon {
+  font-size: 48px;
+  color: var(--db-on-surface-variant);
+  opacity: 0.4;
+}
+
+.card-status-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 8px;
+  background-color: var(--db-primary);
+  color: #ffffff;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-status-badge.maintenance {
+  background-color: var(--db-tertiary-container);
+  color: var(--db-on-tertiary-container);
+}
+
+.badge-pulse {
+  width: 8px;
+  height: 8px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  animation: pulse-dot 1.5s infinite;
+}
+
+@keyframes pulse-dot {
+  0% { transform: scale(0.95); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.5; }
+}
+
+.house-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.card-house-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--db-on-surface);
+  margin: 0 0 4px 0;
+}
+
+.card-house-size {
+  font-size: 14px;
+  color: var(--db-on-surface-variant);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-house-size .material-symbols-outlined {
+  font-size: 16px;
+}
+
+.card-device-count-wrapper {
+  text-align: right;
+}
+
+.card-device-count {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--db-primary);
+}
+
+.card-device-count.maintenance-theme {
+  color: var(--db-tertiary);
+}
+
+.card-device-count.empty-theme {
+  color: var(--db-on-surface-variant);
+}
+
+.card-device-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--db-on-surface-variant);
+  letter-spacing: 0.05em;
+}
+
+/* Card Metric Card inside body */
+.card-metric-preview {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.5);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto; /* Push down to footer if flexing */
+}
+
+.card-metric-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.card-metric-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--db-on-surface-variant);
+  letter-spacing: 0.05em;
+}
+
+.card-metric-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--db-on-surface);
+}
+
+.card-metric-chart {
+  height: 40px;
+  width: 96px;
+  background-color: rgba(0, 108, 73, 0.03);
+  border-radius: 4px;
+  display: flex;
+  align-items: flex-end;
+  padding: 4px;
+  gap: 4px;
+  box-sizing: border-box;
+}
+
+.card-metric-chart.maintenance-theme {
+  background-color: rgba(164, 58, 58, 0.03);
+}
+
+.card-metric-chart.empty-theme {
+  background-color: rgba(108, 122, 113, 0.03);
+}
+
+.empty-state-notice {
+  padding: 16px;
+  background-color: var(--db-surface-container-low);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--db-on-surface-variant);
+}
+
+/* Card Button Actions */
+.card-actions-row {
+  display: flex;
+  gap: 8px;
+}
+
+.card-action-btn {
+  flex: 1;
+  border: none;
+  background-color: var(--db-surface-container);
+  color: var(--db-on-surface-variant);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 10px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.card-action-btn:hover {
+  background-color: rgba(108, 122, 113, 0.2);
+}
+
+.card-action-btn.border-outline {
+  border: 1px solid var(--db-outline-variant);
+  background-color: transparent;
+}
+
+.card-action-btn.border-outline:hover {
+  background-color: var(--db-surface-container);
+}
+
+.card-action-btn.primary-btn {
+  background-color: var(--db-primary);
+  color: #ffffff;
+}
+
+.card-action-btn.primary-btn:hover {
+  opacity: 0.9;
+}
+
+/* Pagination Row */
+.houses-pagination {
+  margin-top: 32px;
+  border-top: 1px solid var(--db-outline-variant);
+  padding-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.houses-pagination p {
+  font-size: 14px;
+  color: var(--db-on-surface-variant);
+}
+
+.pagination-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pagination-btn {
+  background: none;
+  border: 1px solid var(--db-outline-variant);
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--db-on-surface);
+  transition: all 0.2s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: var(--db-surface-container);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination-number-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  background: none;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--db-on-surface);
+}
+
+.pagination-number-btn.active {
+  background-color: var(--db-primary);
+  color: #ffffff;
+}
+
+.pagination-number-btn:hover:not(.active) {
+  background-color: var(--db-surface-container);
+}

@@ -1,0 +1,265 @@
+/* Smart Garden Sidebar CSS */
+
+.smart-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 256px;
+  background-color: #2d3133; /* --inverse-surface */
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 8px;
+  z-index: 50;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Sidebar Collapsed State */
+.smart-sidebar.sidebar-collapsed {
+  width: 72px;
+  padding: 16px 8px;
+}
+
+.smart-sidebar.sidebar-collapsed .sidebar-header {
+  justify-content: center;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  margin-bottom: 32px;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  min-height: 48px;
+}
+
+.sidebar-brand-wrapper {
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  opacity: 1;
+  white-space: nowrap;
+}
+
+.sidebar-collapsed .sidebar-brand-wrapper {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-20px);
+}
+
+.sidebar-title {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  color: #6ffbbe; /* --primary-fixed */
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.sidebar-subtitle {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  color: rgba(224, 227, 229, 0.7); /* --surface-variant / 70% */
+  margin: 4px 0 0 0;
+}
+
+/* Collapse Toggle Button */
+.collapse-toggle-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: #6ffbbe;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+}
+
+.collapse-toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: scale(1.1);
+}
+
+.collapse-toggle-btn:active {
+  transform: scale(0.9);
+}
+
+.sidebar-collapsed .collapse-toggle-btn {
+  margin: 0 auto;
+}
+
+/* Navigation Menu */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Navigation Links & Buttons */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  color: #e0e3e5; /* --surface-variant */
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.sidebar-item-icon {
+  font-family: 'Material Symbols Outlined';
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-size: 24px;
+  line-height: 1;
+}
+
+/* Logout Button Custom Styling */
+.logout-btn {
+  color: #ffb3af !important;
+}
+
+.logout-btn:hover {
+  background-color: rgba(186, 26, 26, 0.15) !important;
+  color: #ffffff !important;
+}
+
+.sidebar-item-label {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+  opacity: 1;
+}
+
+/* Collapsed Links Styles */
+.sidebar-collapsed .sidebar-link {
+  justify-content: center;
+  padding: 12px 0;
+  gap: 0;
+}
+
+.sidebar-collapsed .sidebar-item-label {
+  opacity: 0;
+  width: 0;
+  display: none;
+}
+
+/* Hover State */
+.sidebar-link:hover {
+  color: #f7f9fb; /* --surface-bright */
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(4px);
+}
+
+.sidebar-collapsed .sidebar-link:hover {
+  transform: scale(1.05);
+}
+
+/* Active State */
+.sidebar-link.active {
+  background-color: #006c49; /* --primary */
+  color: #ffffff; /* --on-primary */
+  transform: scale(0.96);
+  box-shadow: inset 4px 0 0 0 #6ffbbe; /* --primary-fixed indicator */
+}
+
+/* Active State Icon fill variation */
+.sidebar-link.active .sidebar-item-icon {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Active click micro-interaction */
+.sidebar-link:active {
+  transform: scale(0.92);
+}
+
+/* Divider line */
+.sidebar-divider {
+  margin: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Footer / System Status Card */
+.sidebar-footer {
+  margin-top: auto;
+  padding: 16px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.sidebar-collapsed .sidebar-footer {
+  padding: 12px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar-footer:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.system-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-icon-wrapper {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #10b981; /* --primary-container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-icon {
+  font-family: 'Material Symbols Outlined';
+  font-size: 20px;
+  color: #00422b; /* --on-primary-container */
+}
+
+.status-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.status-label {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: #f7f9fb; /* --surface-bright */
+  margin: 0;
+}
+
+.status-value {
+  font-size: 10px;
+  line-height: 12px;
+  color: #6ffbbe; /* --primary-fixed */
+  margin: 2px 0 0 0;
+}

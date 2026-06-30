@@ -1,0 +1,8 @@
+#ifndef WIFI_H
+#define WIFI_H
+
+// Thay đổi thông tin mạng Wi-Fi của nhà bạn tại đây
+#define WIFI_SSID "Iphone"
+#define WIFI_PASSWORD "88888888"
+
+#endif
