@@ -2,7 +2,7 @@ import React from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import './HouseDetail.css';
 import { Thermometer, Droplets, Sun, HelpCircle } from 'lucide-react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { NotificationDropdown } from '../NotificationDropdown/NotificationDropdown';
 import { useAuth } from '../../context/AuthContext';
 // Import sub-components
@@ -44,7 +44,6 @@ const getSensorLucideIcon = (sensorKey: string) => {
 
 export const HouseDetail: React.FC = () => {
   const { user } = useAuth();
-  const { id } = useParams();
   const {
     houseName,
     houseInfo,
