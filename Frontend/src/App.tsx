@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { Landing } from './components/Landing/Landing';
 import { Login } from './components/Login/Login';
 import { Register } from './components/Register/Register';
@@ -14,9 +14,23 @@ import { PresetsPage } from './components/Presets/PresetsPage';
 
 
 // Import AuthProvider và ProtectedRoute
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import { NotificationProvider } from './context/NotificationContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import { ChatAI } from './components/ChatAI/ChatAI';
+
+function GlobalChatAI() {
+  const { isAuthenticated } = useAuth();
+  const location = useLocation();
+
+  if (!isAuthenticated) return null;
+
+  // Extract houseId from path if on HouseDetail page (e.g. /houses/:id)
+  const houseMatch = location.pathname.match(/^\/houses\/([^/]+)/);
+  const currentHouseId = houseMatch ? houseMatch[1] : undefined;
+
+  return <ChatAI currentHouseId={currentHouseId} />;
+}
 
 function App() {
   const navigate = useNavigate();
@@ -91,6 +105,7 @@ function App() {
           />
 
         </Routes>
+        <GlobalChatAI />
       </NotificationProvider>
     </AuthProvider>
   );
